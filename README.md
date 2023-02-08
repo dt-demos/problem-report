@@ -53,4 +53,4 @@ The script `problems.py` will call the get problems API and output the results i
     P-230225,Availability issue,CLOSED,INFRASTRUCTURE,AVAILABILITY,02/08/2023,02/08/2023
     ```
   
-4. Open `problems.csv` in Excel and make a pivot table from the results.
+4. Open `problems.csv` in Excel and make a pivot table from the results.  See the `problems.xlsx` example in this repo.
