@@ -1,4 +1,4 @@
-# Examples for the Dynatrace Python API Client library
+# Overview
 
 Python scripting example for the Dynatrace API utilizing the [Dynatrace Python API Client](https://github.com/dynatrace-oss/api-client-python) from the Dynatrace OSS team.
 
