@@ -16,7 +16,7 @@ dt = Dynatrace(
 #problems = dt.problems.list(time_from="now-30m",problem_selector='status("closed")')
 #problems = dt.problems.list(time_from="now-180d",problem_selector='status("closed"),managementZoneIds("mZId-1", "mzId-2")')
 #problems = dt.problems.list(time_from="now-30m") #,entity_selector='type("CUSTOM_DEVICE")')
-problems = dt.problems.list(time_from="now-120m",problem_selector='affectedEntityTypes("CUSTOM_DEVICE")')
+problems = dt.problems.list(time_from="now-120d",problem_selector='affectedEntityTypes("CUSTOM_DEVICE")')
 
 with open('problems.csv', 'w') as file:
   # create the csv writer
