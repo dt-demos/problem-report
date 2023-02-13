@@ -12,11 +12,19 @@ dt = Dynatrace(
     os.getenv("DT_API_TOKEN")
 )
 
+def formatdate(thedate):
+  if thedate:
+    return thedate.strftime("%Y-%m")
+  else:
+    return ""
+
 # adjust as required
 #problems = dt.problems.list(time_from="now-30m",problem_selector='status("closed")')
 #problems = dt.problems.list(time_from="now-180d",problem_selector='status("closed"),managementZoneIds("mZId-1", "mzId-2")')
 #problems = dt.problems.list(time_from="now-30m") #,entity_selector='type("CUSTOM_DEVICE")')
-problems = dt.problems.list(time_from="now-120d",problem_selector='affectedEntityTypes("CUSTOM_DEVICE")')
+#problems = dt.problems.list(time_from="now-120d",time_to="now-60d",problem_selector='affectedEntityTypes("CUSTOM_DEVICE")')
+#problems = dt.problems.list(time_from="2021-01-25T00:00:00",time_to="2023-02-10T00:00:00",problem_selector='affectedEntityTypes("CUSTOM_DEVICE")')
+problems = dt.problems.list(time_from="now-1d",problem_selector='status("closed"),managementZoneIds("mZId-1", "mzId-2")')
 
 with open('problems.csv', 'w') as file:
   # create the csv writer
@@ -36,8 +44,8 @@ with open('problems.csv', 'w') as file:
     str(problem.status).partition(".")[2],\
     str(problem.impact_level).partition(".")[2],\
     str(problem.severity_level).partition(".")[2],\
-    problem.start_time.strftime("%m/%d/%Y"),\
-    problem.end_time.strftime("%m/%d/%Y")))
+    formatdate(problem.start_time),\
+   formatdate(problem.end_time)))
 
   file.close()
 
