@@ -34,13 +34,20 @@ The script `problems.py` will call the get problems API and output the results i
     problems = dt.problems.list(time_from="now-120m",problem_selector='entityTags("key1:value1","key2:value2")')
     ```
     
-2. Review and adjust as needed the CSV output.  For example, the default problem start time is in days.
+2. Review and adjust as needed the CSV output.  
+
+
+3. Adjust date format in the `formatdate` function.
 
     ```
-    problem.start_time.strftime("%m/%d/%Y")
+    # Example: Year then month
+    return thedate.strftime("%Y-%m")
+
+    # Example: Day format
+    return thedate.strftime("%m/%d/%Y")
     ```
 
-3. Run program and view output
+4. Run program and view output
     ```
     python problems.py && cat problems.csv
     ```
@@ -53,4 +60,4 @@ The script `problems.py` will call the get problems API and output the results i
     P-230225,Availability issue,CLOSED,INFRASTRUCTURE,AVAILABILITY,02/08/2023,02/08/2023
     ```
   
-4. Open `problems.csv` in Excel and make a pivot table from the results.  See the `problems.xlsx` example in this repo.
+5. Open `problems.csv` in Excel and make a pivot table from the results.  See the `problems.xlsx` example in this repo.
