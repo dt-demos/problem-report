@@ -35,8 +35,18 @@ with open('problems.csv', 'w') as file:
     print("No problems found")
     quit()
 
-  includedTags = ["tag1","tag2"]
   for problem in problems:
+    # adjust as required
+    pr=problem.json()
+    print(pr)
+    if 'recentComments' in pr:
+        co = pr['recentComments']
+        for c in co:
+          com = co['totalCount']
+    else:
+          print('Skipping comments')
+          com=0
+        
     # adjust as required
     file.write("{},{},{},{},{},{},{}\n".format(
     problem.display_id, \
@@ -45,7 +55,7 @@ with open('problems.csv', 'w') as file:
     str(problem.impact_level).partition(".")[2],\
     str(problem.severity_level).partition(".")[2],\
     formatdate(problem.start_time),\
-   formatdate(problem.end_time)))
+    formatdate(problem.end_time)))
 
   file.close()
 
